@@ -14,10 +14,14 @@ describe("App", () => {
     const paragrahElement = screen.getByText("All fields are mandatory", {
       selector: "p",
     });
+    const imageElement = screen.getByAltText("a person with a laptop");
+    const closeElement = screen.getByTitle("close");
+    const customElement = screen.getByTestId("custom-element");
 
     /* const nameElement = screen.getByRole("textbox", { name: "Name" }); */
     /* const nameElement = screen.getByLabelText("Name"); */ // finds the label with the given text and look for the element associated with it
-    const nameElement = screen.getByPlaceholderText("Fullname");
+    /* const nameElement = screen.getByPlaceholderText("Fullname"); */
+    const nameElement = screen.getByDisplayValue("Will");
     const bioElement = screen.getByRole("textbox", { name: "Bio" });
     const jobLocation = screen.getByRole("combobox");
     /* const termsElement = screen.getByRole("checkbox"); */
@@ -29,6 +33,9 @@ describe("App", () => {
     expect(pageHeadingElement).toBeInTheDocument();
     expect(sectionHeadingElement).toBeInTheDocument();
     expect(paragrahElement).toBeInTheDocument();
+    expect(imageElement).toBeInTheDocument();
+    expect(closeElement).toBeInTheDocument();
+    expect(customElement).toBeInTheDocument();
 
     expect(nameElement).toBeInTheDocument();
     expect(bioElement).toBeInTheDocument();

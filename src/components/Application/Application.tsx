@@ -4,10 +4,19 @@ function Application() {
       <h1>Job Application Form</h1>
       <h2>Section I</h2>
       <p>All fields are mandatory</p>
+      <img src="https://via.placeholder.com/150" alt="a person with a laptop" />
+      <span title="close">X</span>
+      <div data-testid="custom-element">Custmo HTML element</div>
       <form>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" placeholder="Fullname" />
+          <input
+            type="text"
+            id="name"
+            placeholder="Fullname"
+            value="Will"
+            onChange={() => ({})}
+          />
         </div>
         <div>
           <label htmlFor="bio">Bio</label>
