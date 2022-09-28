@@ -11,9 +11,13 @@ describe("App", () => {
     const sectionHeadingElement = screen.getByRole("heading", {
       level: 2,
     });
+    const paragrahElement = screen.getByText("All fields are mandatory", {
+      selector: "p",
+    });
 
     /* const nameElement = screen.getByRole("textbox", { name: "Name" }); */
-    const nameElement = screen.getByLabelText("Name"); // finds the label with the given text and look for the element associated with it
+    /* const nameElement = screen.getByLabelText("Name"); */ // finds the label with the given text and look for the element associated with it
+    const nameElement = screen.getByPlaceholderText("Fullname");
     const bioElement = screen.getByRole("textbox", { name: "Bio" });
     const jobLocation = screen.getByRole("combobox");
     /* const termsElement = screen.getByRole("checkbox"); */
@@ -24,6 +28,7 @@ describe("App", () => {
 
     expect(pageHeadingElement).toBeInTheDocument();
     expect(sectionHeadingElement).toBeInTheDocument();
+    expect(paragrahElement).toBeInTheDocument();
 
     expect(nameElement).toBeInTheDocument();
     expect(bioElement).toBeInTheDocument();

@@ -3,10 +3,11 @@ function Application() {
     <>
       <h1>Job Application Form</h1>
       <h2>Section I</h2>
+      <p>All fields are mandatory</p>
       <form>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
+          <input type="text" id="name" placeholder="Fullname" />
         </div>
         <div>
           <label htmlFor="bio">Bio</label>
