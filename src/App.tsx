@@ -1,8 +1,13 @@
 import "./App.css";
-import Counter from "./components/Counter/Counter";
+import MuiMode from "./components/mui/MuiMode";
+import { AppProviders } from "./providers/app-providers";
 
 function App() {
-  return <Counter />;
+  return (
+    <AppProviders>
+      <MuiMode />
+    </AppProviders>
+  );
 }
 
 export default App;
