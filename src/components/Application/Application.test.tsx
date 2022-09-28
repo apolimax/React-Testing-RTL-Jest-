@@ -1,6 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import Application from "./Application";
 
+/*
+Priority Order for RTL Queries
+1. getByRole
+2. getByLabelText
+3. getByPlaceholderText
+4. getByText
+5. getByDisplayValue
+6. getByAltText
+7. getByTitle
+8. getByTestId
+*/
+
 describe("App", () => {
   test("App renders correctly", () => {
     render(<Application />);
@@ -11,9 +23,30 @@ describe("App", () => {
     const sectionHeadingElement = screen.getByRole("heading", {
       level: 2,
     });
-    const paragrahElement = screen.getByText("All fields are mandatory", {
+    // getByText full string match with string
+    /* const paragrahElement = screen.getByText("All fields are mandatory", {
       selector: "p",
-    });
+    }); */
+
+    // getByText substring match with string
+    /* const paragrahElement = screen.getByText("All fields", {
+      exact: false,
+    }); */
+
+    // getByText substring match with regex
+    /* const paragrahElement = screen.getByText(/all fields/i); */
+
+    // getByText full string match with regex
+    /* const paragrahElement = screen.getByText(/all fields/i, { exact: false }); */
+
+    // getByText full string match with regex
+    /* const paragrahElement = screen.getByText(/^all fields are mandatory$/i); */
+
+    // getByText full string match with custom function
+    const paragrahElement = screen.getByText((content) =>
+      content.startsWith("All")
+    );
+
     const imageElement = screen.getByAltText("a person with a laptop");
     const closeElement = screen.getByTitle("close");
     const customElement = screen.getByTestId("custom-element");
