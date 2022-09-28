@@ -48,4 +48,38 @@ describe("Counter", () => {
     await user.dblClick(incrementButton);
     expect(countElement).toHaveTextContent("2");
   });
+
+  test("should render the counter of 10 after clicking the set button", async () => {
+    user.setup();
+    render(<Counter />);
+
+    const amountInput = screen.getByRole("spinbutton"); // input with type number
+    await user.type(amountInput, "10");
+
+    expect(amountInput).toHaveValue(10);
+
+    const setButton = screen.getByRole("button", { name: "Set" });
+    await user.click(setButton);
+    const countElement = screen.getByRole("heading");
+
+    expect(countElement).toHaveTextContent("10");
+  });
+
+  test("Elements are focused in the right order", async () => {
+    user.setup();
+    render(<Counter />);
+
+    const incrementButton = screen.getByRole("button", { name: "Increment" });
+    const amountInput = screen.getByRole("spinbutton"); // input with type number
+    const setButton = screen.getByRole("button", { name: "Set" });
+
+    await user.tab();
+    expect(incrementButton).toHaveFocus();
+
+    await user.tab();
+    expect(amountInput).toHaveFocus();
+
+    await user.tab();
+    expect(setButton).toHaveFocus();
+  });
 });
