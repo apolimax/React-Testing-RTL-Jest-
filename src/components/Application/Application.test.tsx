@@ -72,8 +72,10 @@ describe("App", () => {
 
     expect(nameElement).toBeInTheDocument();
     expect(bioElement).toBeInTheDocument();
+
     expect(jobLocation).toBeInTheDocument();
     expect(termsElement).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
+    expect(submitButton).toBeDisabled();
   });
 });
